@@ -4,6 +4,7 @@ import { Header, Logo, LogoContainer, StyledLink } from "./SharedLayout.styled";
 import { FcFilm } from "react-icons/fc";
 
 const SharedLayout = () => {
+
     return (
         <div>
             <Header>
