@@ -15,6 +15,11 @@ export const fetchTrendingMovies = async() => {
     return response.data.results;
 };
 
+export const fetchTrendingMoviesPages = async(page) => {
+    const response = await axios.get(`trending/movie/day?page=${page}`, options)
+    return response.data;
+};
+
 export const searchMovies = async movieName => {
     const response = await axios.get(`/search/movie?query=${movieName}`, options);
     return response.data.results;
