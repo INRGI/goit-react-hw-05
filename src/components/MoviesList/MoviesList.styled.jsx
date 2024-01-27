@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
+import { Link } from 'react-router-dom';
 
 export const Ul = styled.ul`
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   max-width: calc(100vw - 48px);
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -11,11 +13,11 @@ export const Ul = styled.ul`
   padding: 0;
   list-style: none;
   margin-left: auto;
-  margin-right: auto;  
+  margin-right: auto;
 `;
 
 export const Li = styled.li`
-    border-radius: 8px;
+    border-radius: 10px;
 `;
 
 export const Img = styled.img`
@@ -29,4 +31,8 @@ export const Img = styled.img`
   transform: scale(1.05);
   cursor: pointer;
 }  
+`;
+
+export const MovieDetail = styled(Link)`
+    text-decoration: none;
 `;
