@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { Header, Logo, LogoContainer, StyledLink } from "./SharedLayout.styled";
 import { FcFilm } from "react-icons/fc";
+import Loader from "../Loader/Loader";
 
 const SharedLayout = () => {
 
@@ -18,7 +19,7 @@ const SharedLayout = () => {
                     <StyledLink to="/movies">Movies</StyledLink>
                 </nav>
             </Header>
-            <Suspense fallback={<div>Loading page...</div>}>
+            <Suspense fallback={<Loader/>}>
                 <Outlet />
             </Suspense>
         </div>

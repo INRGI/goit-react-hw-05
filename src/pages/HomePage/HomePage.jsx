@@ -5,7 +5,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MoviesList from '../../components/MoviesList/MoviesList';
 import Pagination from '@mui/material/Pagination';
-import { Container } from './HomePage.styled';
+import { Container, Title } from './HomePage.styled';
+import { VscFlame } from "react-icons/vsc";
 
 const HomePage = () => {
     const [trendingMovies, setTrendingMovies] = useState([]);
@@ -34,7 +35,7 @@ const HomePage = () => {
 
     return (
         <Container>
-            <h2>Trending Today</h2>
+            <Title>Trending Today <VscFlame size={30}/></Title>
             <SkeletonTheme baseColor="#202020" highlightColor="#444">
                 {trendingMovies.length === 0 ? (
                     <Skeleton count={20} />
