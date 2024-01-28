@@ -33,3 +33,37 @@ export const DetailContainer = styled.div`
 `;
 
 export const Detail = styled.div``;
+
+export const Title = styled.h1`
+    font-size: 34px;
+    padding: 0;
+    margin: 0;
+`;
+
+export const Genres = styled.h3`
+    padding: 0;
+    margin: 0;
+`;
+
+export const GenresText = styled.p`
+    padding: 0;
+    margin: 0;
+`;
+
+export const OverviewText = styled.p`
+    padding: 0;
+    margin-bottom: 10px;
+    max-width: 600px;
+`;
+
+export const Overview = styled.h2`
+    padding: 0;
+    margin: 0;
+`;
+
+export const ButtonContainer = styled.div`
+    display: flex;
+    gap: 20px;
+    margin-left: 14px;
+    margin-bottom: 20px;
+`;

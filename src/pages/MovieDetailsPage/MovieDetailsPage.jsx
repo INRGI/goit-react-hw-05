@@ -3,9 +3,11 @@ import { Outlet, useLocation, useParams } from "react-router-dom";
 import { fetchMoviesDetail } from "../../services/TMDBAPI";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { TbPointFilled } from "react-icons/tb";
+import { FaRankingStar } from "react-icons/fa6";
 import Loader from "../../components/Loader";
 import Button from "../../components/Button";
-import { Container, Detail, DetailContainer, Img, StyledLink } from "./MovieDetailsPage.styled";
+import { ButtonContainer, Container, Detail, DetailContainer, Genres, GenresText, Img, Overview, OverviewText, StyledLink, Title } from "./MovieDetailsPage.styled";
 
 const MovieDetailsPage = () => {
     const { movieId } = useParams();
@@ -35,7 +37,6 @@ const MovieDetailsPage = () => {
 
     const userScore = Math.round(movieDetails.vote_average * 10);
 
-
     return (
         <>
             {isLoading ? (
@@ -45,39 +46,40 @@ const MovieDetailsPage = () => {
                         <StyledLink to={backLinkHref.current}>
                             <Button text="Back"/>
                         </StyledLink>
-
+                        
                         <DetailContainer>
                             <Img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} />
 
                             <Detail>
-                                <h1>{movieDetails.original_title}</h1>
-                                <h4>User score: {userScore}%</h4>
+                                <Title>{movieDetails.original_title}</Title>
+                                <h4><FaRankingStar size={14}/> User score: {userScore}%</h4>
 
-                                <h2>Overview</h2>
-                                <p>{movieDetails.overview}</p>
+                                <Overview>Overview</Overview>
+                                <OverviewText>{movieDetails.overview}</OverviewText>
 
-                                <h2>Genres</h2>
+                                <Genres>Genres</Genres>
 
-                               <p>
+                               <GenresText>
                                     {movieDetails.genres &&
                                         movieDetails.genres.map(genre => (
-                                            <span key={genre.id}> {genre.name}</span>
+                                            <span key={genre.id}> <TbPointFilled size={10}/> {genre.name}</span>
                                         ))
                                     }
-                                </p>
+                                </GenresText>
 
                             </Detail>
                         </DetailContainer>
+                        
 
-                        <div>
-                            <h3>Additional information</h3>
-                            <StyledLink to="cast">
-                                <Button text="Cast" />
-                            </StyledLink>
-                            <StyledLink to="reviews">
-                                <Button text="Reviews" />
-                            </StyledLink>
-                        </div>
+                            <ButtonContainer>
+                                <StyledLink to="cast">
+                                    <Button text="Cast" />
+                                </StyledLink>
+                                <StyledLink to="reviews">
+                                    <Button text="Reviews" />
+                                </StyledLink>
+                            </ButtonContainer>
+
 
                         <Suspense fallback={<Loader />}>
                             <Outlet />
