@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { fetchTrendingMoviesPages } from '../../services/TMDBAPI';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MoviesList from '../../components/MoviesList/MoviesList';
+import Loader from '../../components/Loader'
 import Pagination from '@mui/material/Pagination';
 import { Container, Title } from './HomePage.styled';
 import { VscFlame } from "react-icons/vsc";
@@ -12,6 +12,7 @@ const HomePage = () => {
     const [trendingMovies, setTrendingMovies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (event, value) => {
         setCurrentPage(value);
@@ -21,13 +22,17 @@ const HomePage = () => {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
+                setIsLoading(true);
                 const data = await fetchTrendingMoviesPages(currentPage);
                 setTrendingMovies(data.results);
                 setTotalPages(data.total_pages);
+                setIsLoading(false);
             } catch {
                 toast.error('Something went wrong 😿', {
                     position: 'top-right',
                 });
+            } finally {
+                setIsLoading(false);
             }
         };
         fetchMovies();
@@ -36,9 +41,9 @@ const HomePage = () => {
     return (
         <Container>
             <Title>Trending Today <VscFlame size={30}/></Title>
-            <SkeletonTheme baseColor="#202020" highlightColor="#444">
-                {trendingMovies.length === 0 ? (
-                    <Skeleton count={20} />
+
+                {isLoading ? (
+                    <Loader />
                 ) : (
                     <>
                         <MoviesList movies={trendingMovies} />
@@ -51,7 +56,7 @@ const HomePage = () => {
                         />
                     </>
                 )}
-            </SkeletonTheme>
+
             <ToastContainer />
         </Container>
     );
