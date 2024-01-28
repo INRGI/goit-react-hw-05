@@ -23,7 +23,6 @@ export const Img = styled.img`
   
   &:hover {
   transform: scale(1.03);
-  cursor: pointer;
 }  
 `;
 
