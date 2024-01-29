@@ -1,6 +1,13 @@
+import not from '../../components/images/not.png';
+import { Container } from './NotFound.styled';
+
 const NotFound = () => {
     return (
-        <h1>NotFound</h1>
+        <Container>  
+            <img src={not} width={400}/>
+        </Container>
+        
+                                    
     );
 };
 
