@@ -8,6 +8,7 @@ export const Form = styled.form`
     background-color: #fff;
     border-radius: 3px;
     overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
 
 export const FormButton = styled.button`
@@ -56,3 +57,4 @@ export const Input = styled.input`
     font-size: 18px;
     }
 `;
+
